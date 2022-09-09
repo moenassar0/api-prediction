@@ -1,7 +1,8 @@
-//Fetching divs
+//Fetching html docs
 const main_container = document.getElementById("container");
 const second_container = document.getElementById("second-container");
 const error_message = document.getElementById("error-message");
+const gender_span = document.getElementById("gender-span");
 
 //Event listeners
 document.getElementById("submit").addEventListener("click", submitButton);
@@ -25,28 +26,26 @@ async function fetchJSONData(url){
     }
 }
 
+
 async function renderDogImageURL(url) {
     let results = await fetchJSONData(url);
     let imageURL = results.message;
-    console.log(imageURL);
     document.getElementById("dog-image").src = imageURL;
 }
 
 async function renderGenderPrediction(url) {
     let results = await fetchJSONData(url);
-    let imageURL = results.gender;
-    console.log(imageURL);
+    let genderResult = `${results.gender}`;
+    return genderResult;
 }
 
 async function renderNationalityPrediction(url) {
     try{
         let results = await fetchJSONData(url);
         let imageURL = results.country[0].country_id;
-        console.log(imageURL);
+        //console.log(imageURL);
         imageURL = results.country[1].country_id;
-        console.log(imageURL);
-        imageURL = results.country[2].country_id;
-        console.log(imageURL);
+        //console.log(imageURL);
     }
     catch(exception){
         console.log(exception);
@@ -72,14 +71,17 @@ function submitButton(){
         error_message.classList.add("hidden");
         main_container.classList.add("hidden");
         second_container.classList.remove("hidden");
-        console.log(user_name);
+        //console.log(user_name);
         url = "https://api.genderize.io/?name=" + user_name;
-        console.log(url);
-        renderGenderPrediction(url);
+        //console.log(renderGenderPrediction(url));
+        renderGenderPrediction(url).then(data => {
+            gender_span.innerHTML = "Gender: " + data
+        });
+        
     
         //nationality
         url2 = 'https://api.nationalize.io/?name=' + user_name;
-        console.log(url2);
+        //console.log(url2);
         renderNationalityPrediction(url2);
     }
 }
@@ -89,8 +91,5 @@ function backButton(){
     main_container.classList.remove("hidden");
     second_container.classList.add("hidden");
 }
-
-/*url = "https://api.genderize.io/?name=" + n;
-console.log(url);*/
 
 
