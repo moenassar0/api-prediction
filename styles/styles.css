@@ -24,3 +24,21 @@ body{
 	width: 400px;
 	max-width: 100%;
 }
+
+.header{
+    width: 100%;
+    background-color: grey;
+    height: 50px;
+    border-bottom: 1px solid #f0f0f0;
+	background-color: #f7f7f7;
+	padding: 20px 40px;
+}
+
+.form{
+    padding: 30px 40px;	
+}
+
+.form-control label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
