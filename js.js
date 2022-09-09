@@ -8,4 +8,10 @@ async function fetchJsonData(){
     }
 }
 
-console.log(fetchJsonData());
+async function renderURL() {
+    let users = await fetchJsonData();
+    let imageURL = users.message;
+    console.log(imageURL);
+}
+
+renderURL();
