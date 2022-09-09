@@ -8,15 +8,21 @@ async function fetchJSONData(url){
 }
 
 async function renderDogImageURL(url) {
-    let users = await fetchJSONData(url);
-    let imageURL = users.message;
+    let results = await fetchJSONData(url);
+    let imageURL = results.message;
     console.log(imageURL);
     document.getElementById("dog-image").src = imageURL;
 }
 
 async function renderGenderPrediction(url) {
-    let users = await fetchJSONData(url);
-    let imageURL = users.gender;
+    let results = await fetchJSONData(url);
+    let imageURL = results.gender;
+    console.log(imageURL);
+}
+
+async function renderNationalityPrediction(url) {
+    let results = await fetchJSONData(url);
+    let imageURL = results.country[0];
     console.log(imageURL);
 }
 
@@ -34,7 +40,10 @@ function submitButton(){
     renderGenderPrediction(url);
 
     //nationality
-    
+    url2 = 'https://api.nationalize.io/?name=' + user_name;
+    console.log(url2);
+    renderNationalityPrediction(url2);
+
 }
 
 /*url = "https://api.genderize.io/?name=" + n;
