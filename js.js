@@ -1,5 +1,11 @@
-//Error message handling
+//Fetching divs
+const main_container = document.getElementById("container");
+const second_container = document.getElementById("second-container");
+const error_message = document.getElementById("error-message");
 
+//Event listeners
+document.getElementById("submit").addEventListener("click", submitButton);
+document.getElementById("back").addEventListener("click", backButton);
 
 //Refresh dog image
 let refresh_icon = document.getElementById("refresh");
@@ -33,33 +39,39 @@ async function renderGenderPrediction(url) {
 }
 
 async function renderNationalityPrediction(url) {
-    let results = await fetchJSONData(url);
-    let imageURL = results.country[0].country_id;
-    console.log(imageURL);
-    imageURL = results.country[1].country_id;
-    console.log(imageURL);
-    imageURL = results.country[2].country_id;
-    console.log(imageURL);
-
+    try{
+        let results = await fetchJSONData(url);
+        let imageURL = results.country[0].country_id;
+        console.log(imageURL);
+        imageURL = results.country[1].country_id;
+        console.log(imageURL);
+        imageURL = results.country[2].country_id;
+        console.log(imageURL);
+    }
+    catch(exception){
+        console.log(exception);
+    }
 }
 
 //Get dog image from URL
 renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 
-//
-let n = document.getElementById("submit").addEventListener("click", submitButton);
 
+
+
+//User submits his name
 function submitButton(){
     let user_name = document.getElementById("name").value;
     let exclamation_circle = document.getElementById("exclamation-circle");
-    let main_container = document.getElementById("container");
-    
     //main_container.classList.add("hidden");
-
+    //Error message handling
     if(user_name == ''){
-        console.log("gg");
+        error_message.classList.remove("hidden");
     }
     else{
+        error_message.classList.add("hidden");
+        main_container.classList.add("hidden");
+        second_container.classList.remove("hidden");
         console.log(user_name);
         url = "https://api.genderize.io/?name=" + user_name;
         console.log(url);
@@ -70,8 +82,12 @@ function submitButton(){
         console.log(url2);
         renderNationalityPrediction(url2);
     }
+}
 
-
+//User goes back to the form to submit another name
+function backButton(){
+    main_container.classList.remove("hidden");
+    second_container.classList.add("hidden");
 }
 
 /*url = "https://api.genderize.io/?name=" + n;
