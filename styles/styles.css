@@ -65,3 +65,17 @@ body{
 	margin-top: 20px;
 	width: 100%;
 }
+
+.image-container{
+    display: flex;
+    width: 50%;
+    border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    height: 60%;
+    padding: 10px 10px;
+}
+
+.image-container > img{
+    width: 100%;
+    height: auto;
+}

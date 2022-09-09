@@ -12,6 +12,7 @@ async function renderURL() {
     let users = await fetchJsonData();
     let imageURL = users.message;
     console.log(imageURL);
+    document.getElementById("dog-image").src = imageURL;
 }
 
 renderURL();
