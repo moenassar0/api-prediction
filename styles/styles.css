@@ -69,11 +69,30 @@ body{
 
 .image-container{
     display: flex;
+    flex-direction: column;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 10px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     height: 60%;
     padding: 10px 10px;
+}
+
+.header-img{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    padding: 10px 10px;
+}
+
+.header-img h3{
+    display: flex;
+    align-items: center;
+}
+
+.header-img span{
+    margin-left: 20px;
+    cursor: pointer;
 }
 
 .image-container > img{
@@ -81,6 +100,39 @@ body{
     height: auto;
 }
 
+.container > img{
+    width: 100%;
+    height: auto;
+}
+
 .hidden{
     display: none;
+}
+
+
+/* Utilities */
+
+.text-center{
+    text-align: center;
+}
+
+.red{
+    color: red;
+    font-weight: bolder;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .image-container{
+        width: 100%;
+        height: auto;
+        max-height: 600px;
+    }
+  }
+
+@media only screen and (max-width: 400px) {
+    .image-container{
+        width: 100%;
+        height: auto;
+    }
 }

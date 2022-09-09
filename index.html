@@ -5,23 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>API</title>
 </head>
 <body>
-    <div class="container" id="container">        
+    <div class="container" id="container">     
         <div class="header">
             <h3> Enter your name for a suprise</h3>
         </div>
         <div class="form">
             <div class="form-control">
                 <label for="name">Name</label>
-                <input type="text" placeholder="nassar" id="name" />
+                <input type="text" placeholder="nassar" id="name" required>
+                <div class="error-message" id="error-message">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small class="red">Insert a proper name!</small>
+                </div>   
             </div>
             <button id="submit" class="" href="#">Submit</button>
         </div>
     </div>
 
     <div class="image-container">
+        <div class="header-img text-center">
+            <h3> Random Doge Image <span id="refresh" class="refresh"><img width="40px" height="40px" src="./assets/refresh-icon.svg"></span></h3>
+        </div>
         <img id="dog-image" src="">
     </div>
     <script src="js.js"></script>
