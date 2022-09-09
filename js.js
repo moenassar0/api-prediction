@@ -3,6 +3,8 @@ const main_container = document.getElementById("container");
 const second_container = document.getElementById("second-container");
 const error_message = document.getElementById("error-message");
 const gender_span = document.getElementById("gender-span");
+const nation_span1 = document.getElementById("nation-span1");
+const nation_span2 = document.getElementById("nation-span2");
 
 //Event listeners
 document.getElementById("submit").addEventListener("click", submitButton);
@@ -42,10 +44,8 @@ async function renderGenderPrediction(url) {
 async function renderNationalityPrediction(url) {
     try{
         let results = await fetchJSONData(url);
-        let imageURL = results.country[0].country_id;
-        //console.log(imageURL);
-        imageURL = results.country[1].country_id;
-        //console.log(imageURL);
+        let countryPrediction = results.country;
+        return countryPrediction;
     }
     catch(exception){
         console.log(exception);
@@ -81,8 +81,11 @@ function submitButton(){
     
         //nationality
         url2 = 'https://api.nationalize.io/?name=' + user_name;
-        //console.log(url2);
-        renderNationalityPrediction(url2);
+        renderNationalityPrediction(url2).then(data => {
+            data.forEach(countryID => {
+                console.log(`${countryID.country_id}`);
+            })
+        })
     }
 }
 
