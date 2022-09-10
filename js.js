@@ -1,4 +1,5 @@
 //Fetching html docs
+const the_name = document.getElementById("name");
 const main_container = document.getElementById("container");
 const second_container = document.getElementById("second-container");
 const error_message = document.getElementById("error-message");
@@ -15,7 +16,6 @@ document.getElementById("back").addEventListener("click", backButton);
 let refresh_icon = document.getElementById("refresh");
 refresh_icon.addEventListener("click", refreshDogImage);
 
-
 //General function to fetch json data from API
 async function fetchJSONData(url){
     try{
@@ -26,6 +26,7 @@ async function fetchJSONData(url){
     }
 }
 
+//Get the dog image URL and send it to the HTML element
 async function renderDogImageURL(url) {
     let results = await fetchJSONData(url);
     let imageURL = results.message;
@@ -66,7 +67,7 @@ renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 
 //User submits his name
 function submitButton(){
-    let user_name = document.getElementById("name").value;
+    let user_name = the_name.value;
 
     //Error message handling
     if(user_name == ''){
@@ -93,6 +94,7 @@ function refreshDogImage(){
     renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 } 
 
+//Get the gender prediction from the promise object
 function printGender(user_name){
     url = "https://api.genderize.io/?name=" + user_name;
     renderGenderPrediction(url).then(data => {
@@ -100,22 +102,34 @@ function printGender(user_name){
     });
 }
 
+//Get the nationallity prediction from the promise object
 function printNationality(user_name){
     url = 'https://api.nationalize.io/?name=' + user_name;
     let nats = [];
     renderNationalityPrediction(url).then(data => {
         nats = data.map(obj => obj.country_id);
-        nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
-        //Check if second nationality is returned or not
-        if(nats[1]){
+        
+        //Check if nationality is returned or not
+        if(nats[1] && nats[0]){
+            nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
             nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
         }
+        else if(nats[1]){
+            nation_span1.innerHTML = "<b> Nationality 1: </b> not found";
+            nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
+        }
+        else if(nats[0]){
+            nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
+            nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
+        }
         else{
+            nation_span1.innerHTML = "<b> Nationality 1: </b> not found";
             nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
         }
     })
 }
 
+//Get the age prediction from the promise object
 function printAge(user_name){
     url = 'https://api.agify.io/?name=' + user_name;
     renderAgePrediction(url).then(data => {
