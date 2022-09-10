@@ -75,16 +75,19 @@ function submitButton(){
         url = "https://api.genderize.io/?name=" + user_name;
         //console.log(renderGenderPrediction(url));
         renderGenderPrediction(url).then(data => {
-            gender_span.innerHTML = "Gender: " + data
+            gender_span.innerHTML = "<b>Gender: </b> " + data
         });
         
     
         //nationality
         url2 = 'https://api.nationalize.io/?name=' + user_name;
+        let nats = [];
         renderNationalityPrediction(url2).then(data => {
-            data.forEach(countryID => {
-                console.log(`${countryID.country_id}`);
-            })
+            nats = data.map(obj => obj.country_id);
+            console.log(nats);
+            //console.log(data[0].country_id);
+            nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
+            nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
         })
     }
 }
