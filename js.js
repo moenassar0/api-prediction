@@ -69,7 +69,6 @@ renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 //User submits his name
 function submitButton(){
     let user_name = document.getElementById("name").value;
-    let exclamation_circle = document.getElementById("exclamation-circle");
 
     //Error message handling
     if(user_name == ''){
@@ -81,14 +80,8 @@ function submitButton(){
         second_container.classList.remove("hidden");
         
         printGender(user_name);
-
         printNationality(user_name);
-
-
-        url3 = 'https://api.agify.io/?name=' + user_name;
-        renderAgePrediction(url3).then(data => {
-            age_span.innerHTML = "<b> Age: </b> " + data;
-        });
+        printAge(user_name)
     }
 }
 
@@ -119,6 +112,13 @@ function printNationality(user_name){
             nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
         }
     })
+}
+
+function printAge(user_name){
+    url = 'https://api.agify.io/?name=' + user_name;
+    renderAgePrediction(url).then(data => {
+        age_span.innerHTML = "<b> Age: </b> " + data;
+    });
 }
 
 
