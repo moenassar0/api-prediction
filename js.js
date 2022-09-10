@@ -5,6 +5,7 @@ const error_message = document.getElementById("error-message");
 const gender_span = document.getElementById("gender-span");
 const nation_span1 = document.getElementById("nation-span1");
 const nation_span2 = document.getElementById("nation-span2");
+const age_span = document.getElementById("age-span");
 
 //Event listeners
 document.getElementById("submit").addEventListener("click", submitButton);
@@ -52,6 +53,20 @@ async function renderNationalityPrediction(url) {
     }
 }
 
+async function renderAgePrediction(url) {
+    try{
+        let results = await fetchJSONData(url);
+        let agePrediction = `${results.age}`;
+        //console.log(agePrediction);
+        //agePrediction = results.age;
+        console.log(agePrediction);
+        return agePrediction;
+    }
+    catch(exception){
+        console.log(exception);
+    }
+}
+
 //Get dog image from URL
 renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 
@@ -62,7 +77,7 @@ renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 function submitButton(){
     let user_name = document.getElementById("name").value;
     let exclamation_circle = document.getElementById("exclamation-circle");
-    //main_container.classList.add("hidden");
+
     //Error message handling
     if(user_name == ''){
         error_message.classList.remove("hidden");
@@ -89,6 +104,11 @@ function submitButton(){
             nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
             nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
         })
+
+        url3 = 'https://api.agify.io/?name=' + user_name;
+        renderAgePrediction(url3).then(data => {
+            age_span.innerHTML = "<b> Age: </b> " + data;
+        });
     }
 }
 
