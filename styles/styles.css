@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
 *{
 	box-sizing: border-box;
     margin: 0;
@@ -17,7 +18,7 @@ body{
     overflow-x: hidden;
 }
 
-.container {
+.container{
 	background-color: #fff;
 	border-radius: 5px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -122,6 +123,7 @@ body{
     font-weight: bolder;
 }
 
+/* Responsitivity */
 
 @media only screen and (max-width: 800px) {
     .image-container{

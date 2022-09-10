@@ -15,10 +15,8 @@ document.getElementById("back").addEventListener("click", backButton);
 let refresh_icon = document.getElementById("refresh");
 refresh_icon.addEventListener("click", refreshDogImage);
 
-function refreshDogImage(){
-    renderDogImageURL('https://dog.ceo/api/breeds/image/random');
-} 
 
+//General function to fetch json data from API
 async function fetchJSONData(url){
     try{
         let resultFromPage = await fetch(url);
@@ -90,6 +88,10 @@ function backButton(){
     main_container.classList.remove("hidden");
     second_container.classList.add("hidden");
 }
+
+function refreshDogImage(){
+    renderDogImageURL('https://dog.ceo/api/breeds/image/random');
+} 
 
 function printGender(user_name){
     url = "https://api.genderize.io/?name=" + user_name;

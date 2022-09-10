@@ -9,6 +9,8 @@
     <title>API</title>
 </head>
 <body>
+
+    <!--Main form block START-->
     <div class="container" id="container">     
         <div class="header">
             <h3> Enter your name for a suprise</h3>
@@ -25,7 +27,9 @@
             <button id="submit" class="" href="#">Submit</button>
         </div>
     </div>
+    <!--Main form block END-->
 
+    <!--Results form block START-->
     <div class="container hidden" id="second-container">     
         <div class="header">
             <h3> Predictions from your name </h3>
@@ -46,13 +50,17 @@
             <button id="back" class="" href="#">Back</button>
         </div>
     </div>
+    <!--Results form block END-->
 
+    <!--Random dog image block START-->
     <div class="image-container">
         <div class="header-img">
             <h3 class=""> Random Doge Image <span id="refresh" class="refresh"><img width="40px" height="40px" src="./assets/refresh-icon.svg"></span></h3>
         </div>
         <img id="dog-image" src="">
     </div>
+    <!--Random dog image block END-->
+
     <script src="js.js"></script>
 </body>
 </html>
