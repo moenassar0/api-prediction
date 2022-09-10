@@ -16,7 +16,6 @@ let refresh_icon = document.getElementById("refresh");
 refresh_icon.addEventListener("click", refreshDogImage);
 
 function refreshDogImage(){
-    console.log("gg");
     renderDogImageURL('https://dog.ceo/api/breeds/image/random');
 } 
 
@@ -28,7 +27,6 @@ async function fetchJSONData(url){
         console.log(error);
     }
 }
-
 
 async function renderDogImageURL(url) {
     let results = await fetchJSONData(url);
@@ -57,9 +55,6 @@ async function renderAgePrediction(url) {
     try{
         let results = await fetchJSONData(url);
         let agePrediction = `${results.age}`;
-        //console.log(agePrediction);
-        //agePrediction = results.age;
-        console.log(agePrediction);
         return agePrediction;
     }
     catch(exception){
@@ -69,8 +64,6 @@ async function renderAgePrediction(url) {
 
 //Get dog image from URL
 renderDogImageURL('https://dog.ceo/api/breeds/image/random');
-
-
 
 
 //User submits his name
@@ -86,9 +79,8 @@ function submitButton(){
         error_message.classList.add("hidden");
         main_container.classList.add("hidden");
         second_container.classList.remove("hidden");
-        //console.log(user_name);
+
         url = "https://api.genderize.io/?name=" + user_name;
-        //console.log(renderGenderPrediction(url));
         renderGenderPrediction(url).then(data => {
             gender_span.innerHTML = "<b>Gender: </b> " + data
         });
@@ -99,10 +91,13 @@ function submitButton(){
         let nats = [];
         renderNationalityPrediction(url2).then(data => {
             nats = data.map(obj => obj.country_id);
-            console.log(nats);
-            //console.log(data[0].country_id);
             nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
-            nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
+            if(nats[1]){
+                nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
+            }
+            else{
+                nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
+            }
         })
 
         url3 = 'https://api.agify.io/?name=' + user_name;
