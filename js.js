@@ -82,19 +82,8 @@ function submitButton(){
         
         printGender(user_name);
 
-        //nationality
-        url2 = 'https://api.nationalize.io/?name=' + user_name;
-        let nats = [];
-        renderNationalityPrediction(url2).then(data => {
-            nats = data.map(obj => obj.country_id);
-            nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
-            if(nats[1]){
-                nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
-            }
-            else{
-                nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
-            }
-        })
+        printNationality(user_name);
+
 
         url3 = 'https://api.agify.io/?name=' + user_name;
         renderAgePrediction(url3).then(data => {
@@ -114,6 +103,22 @@ function printGender(user_name){
     renderGenderPrediction(url).then(data => {
         gender_span.innerHTML = "<b>Gender: </b> " + data
     });
+}
+
+function printNationality(user_name){
+    url = 'https://api.nationalize.io/?name=' + user_name;
+    let nats = [];
+    renderNationalityPrediction(url).then(data => {
+        nats = data.map(obj => obj.country_id);
+        nation_span1.innerHTML = "<b> Nationality 1: </b> " + nats[0];
+        //Check if second nationality is returned or not
+        if(nats[1]){
+            nation_span2.innerHTML = "<b> Nationality 2: </b> " + nats[1];
+        }
+        else{
+            nation_span2.innerHTML = "<b> Nationality 2: </b> not found";
+        }
+    })
 }
 
 
