@@ -79,13 +79,9 @@ function submitButton(){
         error_message.classList.add("hidden");
         main_container.classList.add("hidden");
         second_container.classList.remove("hidden");
-
-        url = "https://api.genderize.io/?name=" + user_name;
-        renderGenderPrediction(url).then(data => {
-            gender_span.innerHTML = "<b>Gender: </b> " + data
-        });
         
-    
+        printGender(user_name);
+
         //nationality
         url2 = 'https://api.nationalize.io/?name=' + user_name;
         let nats = [];
@@ -112,5 +108,13 @@ function backButton(){
     main_container.classList.remove("hidden");
     second_container.classList.add("hidden");
 }
+
+function printGender(user_name){
+    url = "https://api.genderize.io/?name=" + user_name;
+    renderGenderPrediction(url).then(data => {
+        gender_span.innerHTML = "<b>Gender: </b> " + data
+    });
+}
+
 
 
