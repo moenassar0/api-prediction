@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <!--Main form block START-->
+    <!--Login form block START-->
     <div class="container" id="container">     
         <div class="header">
             <h3> Login below: </h3>
@@ -19,23 +19,19 @@
             <div class="form-control">
                 <label for="username-login">Username</label>
                 <input type="text" placeholder="nassar" id="username-login" required>
-                <div class="error-message hidden" id="error-message">
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small class="red">Insert a proper name!</small>
-                </div>
                 <label for="password-login">Password</label>
                 <input type="password" placeholder="Password" id="password-login" required>
-                <div class="error-message hidden" id="error-message">
+                <div class="error-message hidden" id="error-message-log">
                     <i class="fa fa-exclamation-circle"></i>
-                    <small class="red">Insert a proper name!</small>
+                    <small class="red">Incorrect username or password</small>
                 </div>     
             </div>
             <button id="login" href="#">Login</button>
         </div>
     </div>
-    <!--Main form block END-->
+    <!--Login form block END-->
 
-    <!--Main form block START-->
+    <!--Register block START-->
     <div class="container" id="container">     
         <div class="header">
             <h3> Register below: </h3>
@@ -44,21 +40,17 @@
             <div class="form-control">
                 <label for="username-register">Username</label>
                 <input type="text" placeholder="Username" id="username-register" required>
-                <div class="error-message hidden" id="error-message">
-                    <i class="fa fa-exclamation-circle"></i>
-                    <small class="red">Insert a proper name!</small>
-                </div>
                 <label for="password">Password</label>
                 <input type="password" placeholder="Password" id="password-register" required>
-                <div class="error-message hidden" id="error-message">
+                <div class="error-message hidden" id="error-message-reg">
                     <i class="fa fa-exclamation-circle"></i>
-                    <small class="red">Insert a proper name!</small>
+                    <small class="green">Successfully registered!</small>
                 </div>     
             </div>
             <button id="register" href="#">Register</button>
         </div>
     </div>
-    <!--Main form block END-->
+    <!--Register block END-->
 
 
     <script src="login-register.js"></script>

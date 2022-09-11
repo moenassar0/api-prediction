@@ -124,6 +124,11 @@ body{
     font-weight: bolder;
 }
 
+.green{
+    color: green;
+    font-weight: bolder;
+}
+
 /* Responsitivity */
 
 @media only screen and (max-width: 800px) {

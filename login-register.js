@@ -4,7 +4,9 @@ const username_log = document.getElementById("username-login");
 const password_log = document.getElementById("password-login");
 const username_reg = document.getElementById("username-register");
 const password_reg = document.getElementById("password-register");
-
+const error_message_reg = document.getElementById("error-message-reg");
+const error_message_log = document.getElementById("error-message-log");
+error_message_reg.classList.add("hidden");
 
 function registerButton(){
     console.log(username_reg.value);
@@ -17,6 +19,7 @@ function registerButton(){
     
     var json = JSON.stringify(userinfo);
     localStorage.setItem(username_reg.value + " info", json);
+    error_message_reg.classList.remove("hidden");
 }
 
 function loginButton(){
@@ -29,12 +32,15 @@ function loginButton(){
     
     if(userinfo == null){
         console.log("worng user");
+        error_message_log.classList.remove("hidden");
     }
     else if(jsondata.username != username_log.value || jsondata.password != password_log.value){
         console.log("worng user");
+        error_message_log.classList.remove("hidden");
     }
     else{
-        console.log("correct credit");
+        location.href = './loggedIn.html';
+        error_message_log.classList.add("hidden");
     }
 }
 
