@@ -20,13 +20,22 @@ function registerButton(){
 }
 
 function loginButton(){
-    console.log(username_log.value);
-    console.log(password_log.value);
+    //console.log(username_log.value);
+    //console.log(password_log.value);
 
     let userinfo = localStorage.getItem(username_log.value + " info");
-    console.log(userinfo);
-    let jsoninfo = JSON.parse(userinfo);
-    console.log(jsoninfo)
+    //console.log(userinfo);
+    let jsondata = JSON.parse(userinfo);
+    
+    if(userinfo == null){
+        console.log("worng user");
+    }
+    else if(jsondata.username != username_log.value || jsondata.password != password_log.value){
+        console.log("worng user");
+    }
+    else{
+        console.log("correct credit");
+    }
 }
 
 
