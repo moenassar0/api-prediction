@@ -18,25 +18,21 @@ const register_form = document.getElementById("register-form");
 error_message_reg.classList.add("hidden");
 
 function registerButton(){
-    console.log(username_reg.value);
-    console.log(password_reg.value);
-
-    var userinfo = {
-        username: username_reg.value,
-        password: password_reg.value,
-    };
-    
-    var json = JSON.stringify(userinfo);
-    localStorage.setItem(username_reg.value + " info", json);
-    error_message_reg.classList.remove("hidden");
+    if(username_reg.value != '' && password_reg.value != ''){
+        var userinfo = {
+            username: username_reg.value,
+            password: password_reg.value,
+        };
+        
+        //Get data and store locally
+        var json = JSON.stringify(userinfo);
+        localStorage.setItem(username_reg.value + " info", json);
+        error_message_reg.classList.remove("hidden");
+    }
 }
 
 function loginButton(){
-    //console.log(username_log.value);
-    //console.log(password_log.value);
-
     let userinfo = localStorage.getItem(username_log.value + " info");
-    //console.log(userinfo);
     let jsondata = JSON.parse(userinfo);
     
     if(userinfo == null){
