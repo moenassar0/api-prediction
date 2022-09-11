@@ -13,54 +13,54 @@
     <!--Main form block START-->
     <div class="container" id="container">     
         <div class="header">
-            <h3> Enter your name for a suprise</h3>
+            <h3> Login below: </h3>
         </div>
         <div class="form">
             <div class="form-control">
-                <label for="name">Name</label>
-                <input type="text" placeholder="nassar" id="name" required>
+                <label for="username-login">Username</label>
+                <input type="text" placeholder="nassar" id="username-login" required>
                 <div class="error-message hidden" id="error-message">
                     <i class="fa fa-exclamation-circle"></i>
                     <small class="red">Insert a proper name!</small>
-                </div>   
+                </div>
+                <label for="password-login">Password</label>
+                <input type="password" placeholder="Password" id="password-login" required>
+                <div class="error-message hidden" id="error-message">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small class="red">Insert a proper name!</small>
+                </div>     
             </div>
-            <button id="submit" href="#">Submit</button>
+            <button id="login" href="#">Login</button>
         </div>
     </div>
     <!--Main form block END-->
 
-    <!--Results form block START-->
-    <div class="container hidden" id="second-container">     
+    <!--Main form block START-->
+    <div class="container" id="container">     
         <div class="header">
-            <h3> Predictions from your name </h3>
+            <h3> Register below: </h3>
         </div>
         <div class="form">
             <div class="form-control">
-                <span id="gender-span">Gender:</span>
+                <label for="username-register">Username</label>
+                <input type="text" placeholder="Username" id="username-register" required>
+                <div class="error-message hidden" id="error-message">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small class="red">Insert a proper name!</small>
+                </div>
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password-register" required>
+                <div class="error-message hidden" id="error-message">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <small class="red">Insert a proper name!</small>
+                </div>     
             </div>
-            <div class="form-control">
-                <span id="nation-span1">Nation:</span>
-            </div>
-            <div class="form-control">
-                <span id="nation-span2">Nation:</span>
-            </div>
-            <div class="form-control">
-                <span id="age-span">Age:</span>
-            </div>
-            <button id="back" href="#">Back</button>
+            <button id="register" href="#">Register</button>
         </div>
     </div>
-    <!--Results form block END-->
+    <!--Main form block END-->
 
-    <!--Random dog image block START-->
-    <div class="image-container">
-        <div class="header-img">
-            <h3 class=""> Random Doge Image <span id="refresh" class="refresh"><img width="40px" height="40px" src="./assets/refresh-icon.svg"></span></h3>
-        </div>
-        <img id="dog-image" src="">
-    </div>
-    <!--Random dog image block END-->
 
-    <script src="js.js"></script>
+    <script src="login-register.js"></script>
 </body>
 </html>
