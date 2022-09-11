@@ -1,11 +1,20 @@
+//Clickable docs
 document.getElementById("register").addEventListener("click", registerButton);
 document.getElementById("login").addEventListener("click", loginButton);
+document.getElementById("gotoregister").addEventListener("click", showRegister);
+document.getElementById("gotologin").addEventListener("click", showLogin);
+
+//Variable declarations
 const username_log = document.getElementById("username-login");
 const password_log = document.getElementById("password-login");
 const username_reg = document.getElementById("username-register");
 const password_reg = document.getElementById("password-register");
 const error_message_reg = document.getElementById("error-message-reg");
 const error_message_log = document.getElementById("error-message-log");
+const login_form = document.getElementById("login-form");
+const register_form = document.getElementById("register-form");
+
+//Empty register error message
 error_message_reg.classList.add("hidden");
 
 function registerButton(){
@@ -44,4 +53,12 @@ function loginButton(){
     }
 }
 
+function showLogin(){
+    login_form.classList.remove("hidden");
+    register_form.classList.add("hidden");
+}
 
+function showRegister(){
+    login_form.classList.add("hidden");
+    register_form.classList.remove("hidden");
+}
