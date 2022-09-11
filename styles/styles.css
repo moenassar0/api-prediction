@@ -69,6 +69,14 @@ body{
     cursor: pointer;
 }
 
+.form a {
+    cursor:pointer;
+    font-weight: bolder;
+}
+.form a:hover {
+    color:#8e44ad;
+}
+
 .image-container{
     display: flex;
     flex-direction: column;
